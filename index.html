@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Discord Bot Service</title>
+  <link rel="stylesheet" href="pageStyle.css"/>
+</head>
+<button id="chatToggleBtn" onclick="toggleChat()" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; border-radius: 50%; width: 60px; height: 60px; font-size: 24px;">🤖</button>
+
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; display: flex; align-items: center; gap: 10px;">
+  
+  <div id="chatHint" style="background: #7a00ff; color: white; padding: 8px 15px; border-radius: 20px; font-size: 13px; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.3); white-space: nowrap; position: relative; animation: bounce 2s infinite;">
+    🤖 Потрібна допомога? Запитай мене!
+    <div style="position: absolute; right: -6px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 6px solid #7a00ff;"></div>
+  </div>
+
+  <button id="chatToggleBtn" onclick="toggleChat()" style="border-radius: 50%; width: 60px; height: 60px; font-size: 24px; margin: 0; box-shadow: 0 4px 15px rgba(122, 0, 255, 0.4);">🤖</button>
+</div>
+
+<div id="aiChatWindow" style="display: none; position: fixed; bottom: 95px; right: 20px; width: 320px; height: 400px; background: #1c1c33; border: 2px solid #7a00ff; border-radius: 10px; z-index: 1000; flex-direction: column; box-shadow: 0 5px 15px rgba(0,0,0,0.5);">
+  <div style="background: #7a00ff; padding: 10px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+    <span>BotConnect AI Асистент</span>
+    <button onclick="toggleChat()" style="background: none; padding: 0; font-size: 16px;">❌</button>
+  </div>
+  <div id="chatMessages" style="flex: 1; padding: 10px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; font-size: 14px; text-align: left;">
+    <div style="background: #2b2bff; padding: 8px; border-radius: 8px; align-self: flex-start; max-width: 80%;">Вітаю! Я ШІ-асистент BotConnect. Чим можу допомогти з налаштуванням Discord-ботів?</div>
+  </div>
+  <div style="display: flex; padding: 10px; gap: 5px; border-top: 1px solid #2b2bff;">
+    <input type="text" id="chatInput" placeholder="Запитайте щось..." style="flex: 1; color: black;" onkeypress="if(event.key === 'Enter') sendChatMessage()">
+    <button onclick="sendChatMessage()" style="padding: 5px 10px;">Друк</button>
+  </div>
+</div>
+<body>
+
+<header class="header">
+  <div class="logo-container">
+    <img src="logo.png" alt="Logo" class="logo-img">
+    <div class="logo">BotConnect</div>
+  </div>
+
+  <nav>
+  <a href="about.html">Про нас</a>
+  <a href="contacts.html">Контакти</a>
+  <a href="#services">Послуги</a>
+  <a href="#order">Замовити</a>
+</nav>
+</header>
+
+<section class="hero">
+  <h1>Підключення Discord-ботів</h1>
+  <p>Швидке налаштування, хостинг та інтеграції під ваш сервер</p>
+  <button onclick="scrollToOrder()">Замовити</button>
+</section>
+
+<section id="services" class="services">
+  <h2>Наші послуги</h2>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Базове підключення</h3>
+      <p>Додавання бота на сервер та базова конфігурація</p>
+    </div>
+
+    <div class="card">
+      <h3>Кастомні боти</h3>
+      <p>Розробка бота під ваші задачі</p>
+    </div>
+
+    <div class="card">
+      <h3>Хостинг</h3>
+      <p>24/7 робота без простоїв</p>
+    </div>
+  </div>
+</section>
+
+
+<section id="order" class="order">
+  <h2>Замовлення</h2>
+
+  <form id="orderForm">
+    <input type="text" placeholder="Ваш Discord" required />
+    <input type="text" placeholder="ID сервера" required />
+    <select>
+      <option>Базове підключення</option>
+      <option>Кастомний бот</option>
+      <option>Хостинг</option>
+    </select>
+    <textarea placeholder="Додаткові деталі"></textarea>
+    <button type="submit">Відправити</button>
+  </form>
+
+  <p id="status"></p>
+</section>
+
+
+<footer class="footer">
+  <p>© 2026 BotConnect</p>
+</footer>
+
+<script src="pageJs.js"></script>
+</body>
+</html>
